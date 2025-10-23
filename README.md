@@ -32,8 +32,3 @@ no setup, no dependencies, just open it and start checking!
 2. Paste tokens (each on a new line) **or** load them from a `.txt` file.  
 3. Click **Check Tokens** to start scanning.  
 4. After completion, press **💾 Download Valid Tokens** to save them locally.
-
----
-
-## 📁 Project Structure
-
