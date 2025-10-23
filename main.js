@@ -47,7 +47,7 @@ async function checkAllTokens(tokens) {
   const duplicateCount = cleaned.length - uniqueTokens.length;
   if (duplicateCount > 0) {
     new Toast({
-      message: `${duplicateCount} duplicate token çıkarıldı. Aynı tokenlar sadece 1 kez kontrol edilecek.`,
+      message: `${duplicateCount} Already existing token(s) were removed. Duplicate tokens will only be checked once.`,
       type: "default"
     });
   }
