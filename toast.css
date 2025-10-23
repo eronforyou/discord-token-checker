@@ -14,8 +14,8 @@
 }
 
 .toastjs {
-  background: #1e293b; /* koyu gri-mavi */
-  color: #f8fafc; /* açık beyaz yazı */
+  background: #1e293b;
+  color: #f8fafc;
   padding: 12px 15px 10px;
   border-left-style: solid;
   border-left-width: 5px;
@@ -29,15 +29,15 @@
 }
 
 .toastjs.success {
-  border-left-color: #22c55e; /* yeşil */
+  border-left-color: #22c55e;
 }
 
 .toastjs.warning {
-  border-left-color: #f59e0b; /* turuncu */
+  border-left-color: #f59e0b;
 }
 
 .toastjs.danger {
-  border-left-color: #ef4444; /* kırmızı */
+  border-left-color: #ef4444;
 }
 
 .toastjs-btn {
@@ -65,3 +65,4 @@
 .toastjs-btn--custom:hover {
   background: #6366f1;
 }
+
