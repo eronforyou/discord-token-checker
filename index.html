@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Discord Token Checker</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="toast.js"></script>
+  <link rel="stylesheet" href="toast.css">
+
+  <style>
+    body {
+      background: radial-gradient(circle at top left, #1e293b, #0f172a);
+      min-height: 100vh;
+      color: white;
+    }
+
+    .glass {
+      backdrop-filter: blur(15px);
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+    }
+
+    textarea::placeholder {
+      color: #94a3b8;
+    }
+
+    .fade-in {
+      animation: fadeIn 0.6s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .scroll-box {
+      max-height: 350px;
+      overflow-y: auto;
+    }
+  </style>
+</head>
+
+<body class="grid place-items-center">
+  <div class="text-center w-full max-w-2xl mx-auto p-8 glass rounded-2xl fade-in">
+    <h1
+      class="text-4xl font-bold mb-2 bg-gradient-to-r from-indigo-400 to-cyan-300 bg-clip-text text-transparent select-none">
+      Discord Token Checker
+    </h1>
+    <p class="text-gray-400 mb-6 text-sm">Paste tokens or upload a .txt file to check them all at once.</p>
+
+    <div class="mb-3 flex justify-center items-center gap-3">
+      <input type="file" id="fileInput" accept=".txt"
+        class="bg-gray-800 text-sm border border-gray-700 rounded px-3 py-2 w-fit">
+      <button id="loadFile"
+        class="px-3 py-2 bg-slate-700 hover:bg-slate-600 rounded font-semibold text-sm transition">Load File</button>
+    </div>
+
+    <textarea id="tokens" placeholder="Enter tokens here (one per line)..."
+      class="w-full h-40 px-3 py-2 rounded-md bg-gray-800 border border-gray-700 focus:ring-2 focus:ring-indigo-400 outline-none text-sm resize-none"></textarea>
+
+    <button id="checkAll"
+      class="mt-4 px-5 py-2 bg-indigo-500 hover:bg-indigo-600 active:scale-95 transition rounded-md font-semibold text-sm">Check
+      Tokens</button>
+
+    <div id="results" class="hidden mt-8 text-left scroll-box bg-gray-900 border border-gray-700 rounded-lg p-4 text-sm">
+      <h2 class="font-semibold text-indigo-400 mb-3">Results</h2>
+      <div id="resultList" class="space-y-1"></div>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+
+</html>
