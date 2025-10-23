@@ -20,7 +20,6 @@ async function checkToken(token) {
     } else if (response.status === 401) {
       return { valid: false, reason: "Invalid Token" };
     } else if (response.status === 429) {
-      // Rate limited, bekle ve tekrar dene (Discord bazen JSON dönmeyebilir; güvenli fallback)
       let retryAfter = 3000;
       try {
         const body = await response.json();
@@ -39,10 +38,9 @@ async function checkToken(token) {
 async function checkAllTokens(tokens) {
   $("#results").removeClass("hidden");
   $("#resultList").empty();
-  $("#downloadBtn").remove(); // önceki butonu temizle
+  $("#downloadBtn").remove();
   validTokens = [];
 
-  // Trim, boşları at, ve duplicate'ları kaldır
   const cleaned = tokens.map(t => t.trim()).filter(Boolean);
   const uniqueTokens = Array.from(new Set(cleaned));
 
@@ -70,7 +68,6 @@ async function checkAllTokens(tokens) {
     if (result.valid) {
       validCount++;
       validTokens.push(token);
-      // token'ı kısaltarak göster (tam token loglamamak için)
       const shortTok = token.length > 30 ? token.slice(0, 20) + "..." + token.slice(-5) : token;
       $("#resultList").append(
         `<p class='text-green-400'>✅ ${shortTok} → ${result.username} (${result.email})</p>`
@@ -83,7 +80,6 @@ async function checkAllTokens(tokens) {
       );
     }
 
-    // küçük gecikme (rate limit koruması)
     await new Promise(res => setTimeout(res, 500 + Math.random() * 500));
   }
 
@@ -105,7 +101,6 @@ async function checkAllTokens(tokens) {
 }
 
 function downloadValidTokens() {
-  // download ederken validTokens zaten unique çünkü başta dedupe yapıldı
   const blob = new Blob([validTokens.join("\n")], { type: "text/plain" });
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
